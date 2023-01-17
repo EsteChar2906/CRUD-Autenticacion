@@ -20,8 +20,8 @@ const controller = {
 	},
 	listNegocios: async(req, res) => {
 		const IdUser = req.user.ID;
-		const negocios = await pool.query('SELECT * FROM negocios WHERE User_id = ?', [IdUser]);
-		res.render('negocios/listNegocios.hbs', {negocios})
+		const [rows] = await pool.query('SELECT * FROM negocios WHERE User_id = ?', [IdUser]);
+		res.render('negocios/listNegocios.hbs', {rows})
 	},
 	deleteNegocio: async(req, res) => {
 		let { id } = req.params;
@@ -31,8 +31,8 @@ const controller = {
 	},
 	editarNegocio: async(req, res) => {
 		let { id } = req.params;
-		const negocio = await pool.query('SELECT * FROM negocios WHERE ID = ?', [id])
-		res.render('negocios/editForm.hbs', {negocio: negocio[0]});
+		const [rows] = await pool.query('SELECT * FROM negocios WHERE ID = ?', [id])
+		res.render('negocios/editForm.hbs', {negocio: rows[0]});
 	},
 	editUpdNegocio: async(req, res) => {
 		let { id } = req.params;
