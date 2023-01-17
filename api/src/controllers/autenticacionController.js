@@ -21,6 +21,14 @@ const controller = {
 	},
 	profile: (req, res) => {
 		res.render('profile.hbs');
+	},
+	logout: async(req, res) => {
+		await req.logOut((err) => {
+			if(err){
+				console.log(err)
+			}
+		});
+		res.redirect('/api/loginuser');
 	}
 }
 

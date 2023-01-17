@@ -1,18 +1,21 @@
 const express = require('express');
 const negociosController = require('../controllers/negociosController.js');
 const db = require('../db.js');
+const { isLoggedIn } = require('../lib/auth.js');
 const router = express.Router();
 
-router.get('/postnegocios', negociosController.getNegocios);
+router.get('/postnegocios', isLoggedIn, negociosController.getNegocios);
 
-router.post('/postnegocios', negociosController.postNegocios);
+router.post('/postnegocios', isLoggedIn, negociosController.postNegocios);
 
-router.get('/listnegocios', negociosController.listNegocios);
+router.get('/listnegocios', isLoggedIn, negociosController.listNegocios);
 
-router.get('/deletenegocio/:id', negociosController.deleteNegocio);
+router.get('/deletenegocio/:id', isLoggedIn, negociosController.deleteNegocio);
 
-router.get('/editarnegocio/:id', negociosController.editarNegocio);
+router.get('/editarnegocio/:id', isLoggedIn, negociosController.editarNegocio);
 
-router.post('/editarnegocio/:id', negociosController.editUpdNegocio);
+router.post('/editarnegocio/:id', isLoggedIn, negociosController.editUpdNegocio);
+
+router.get('/listnegocios/alluser', negociosController.listNegociosAllUser);
 
 module.exports = router;

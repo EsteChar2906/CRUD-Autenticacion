@@ -9,7 +9,8 @@ const controller = {
 			Nombre,
 			Direccion,
 			Celular,
-			Correo
+			Correo,
+			User_Id: req.user.ID
 		};
 
 		await pool.query('INSERT INTO negocios set ?', [negocioNuevo]);
@@ -18,23 +19,23 @@ const controller = {
 		res.redirect('/api/listnegocios');
 	},
 	listNegocios: async(req, res) => {
-		const negocios = await pool.query('SELECT * FROM negocios');
-		console.log(negocios)
+		const IdUser = req.user.ID;
+		const negocios = await pool.query('SELECT * FROM negocios WHERE User_id = ?', [IdUser]);
 		res.render('negocios/listNegocios.hbs', {negocios})
 	},
 	deleteNegocio: async(req, res) => {
-		let { ID } = req.params;
+		let { id } = req.params;
 
-		await pool.query('DELETE FROM negocios WHERE ID = ?', {ID});
+		await pool.query('DELETE FROM negocios WHERE ID = ?', [id]);
 		res.redirect('/api/listnegocios')
 	},
 	editarNegocio: async(req, res) => {
-		let { ID } = req.params;
-		const negocio = await pool.query('SELECT * FROM negocios WHERE ID = ?', {ID})
+		let { id } = req.params;
+		const negocio = await pool.query('SELECT * FROM negocios WHERE ID = ?', [id])
 		res.render('negocios/editForm.hbs', {negocio: negocio[0]});
 	},
 	editUpdNegocio: async(req, res) => {
-		let { ID } = req.params;
+		let { id } = req.params;
 		let { Nombre, Direccion, Celular, Correo} = req.body;
 
 		const negocioNuevo = {
@@ -44,8 +45,13 @@ const controller = {
 			Correo
 		};
 
-		await pool.query('UPDATE negocios set ? WHERE ID = ?', {negocioNuevo, ID})
-	} 
+		await pool.query('UPDATE negocios set ? WHERE ID = ?', [negocioNuevo, id])
+	},
+	listNegociosAllUser: async(req, res) => {
+		const negociosUser = await pool.query('SELECT * FROM negocios, usuarios WHERE negocios.User_id = usuarios.ID');
+		console.log(negociosUser)
+		
+	}
 }
 
 module.exports = controller;

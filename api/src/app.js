@@ -11,6 +11,7 @@ const passport = require('passport');
 const { appS, db } = require('./config.js');
 const routeAuth = require('./routes/autenticacion.js');
 const routeNegocio = require('./routes/negocios.js');
+const routePagina = require('./routes/paginaInicio.js');
 
 const app = express();
 require('./lib/passport.js');
@@ -52,6 +53,7 @@ app.use((req, res, next) => {
 //routes
 app.use('/api', routeAuth);
 app.use('/api', routeNegocio);
+app.use('/api', routePagina);
 
 //static files
 app.use(express.static(path.join(__dirname, 'public')));
