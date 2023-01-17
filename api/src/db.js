@@ -1,8 +1,10 @@
-const mysql = require('mysql2');
+const mysql2 = require('mysql2');
+const session = require('express-session');
+const MySQLStore = require('express-mysql-session')(session);
 const { promisify } = require('util');
 const { db } = require('./config.js');
 
-const pool = mysql.createPool(db);
+const pool = mysql2.createPool(db);
 
 pool.getConnection((err, connection) => {
 	if(err){
@@ -14,7 +16,9 @@ pool.getConnection((err, connection) => {
 	return;
 });
 
+const sessionStore = new MySQLStore(db, pool);
+
 //promisify para querys
 pool.query = promisify(pool.query);
 
-module.exports = pool;
+module.exports = { pool, sessionStore };

@@ -1,17 +1,17 @@
 const express = require('express');
 const morgan = require('morgan');
-const mysql = require('mysql2');
+const mysql2 = require('mysql2');
 const {engine} = require('express-handlebars');
 const libHandlebars = require('./lib/handlebars.js');
 const path = require('path');
 const flash = require('connect-flash');
-const session = require('express-session');
-const MySQLStore = require('express-mysql-session');
 const passport = require('passport');
+const session = require('express-session');
 const { appS, db } = require('./config.js');
 const routeAuth = require('./routes/autenticacion.js');
 const routeNegocio = require('./routes/negocios.js');
 const routePagina = require('./routes/paginaInicio.js');
+const { sessionStore } = require('./db.js');
 
 const app = express();
 require('./lib/passport.js');
@@ -33,10 +33,11 @@ app.use(morgan('dev'));
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 app.use(session({
+	key: 'crudnegocios',
 	secret: 'crudnegocios',
 	resave: false,
 	saveUninitialized: false,
-	store: new MySQLStore(db)
+	store: sessionStore
 }));
 app.use(flash());
 app.use(passport.initialize());

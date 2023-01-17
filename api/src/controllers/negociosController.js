@@ -1,4 +1,4 @@
-const pool = require('../db.js')
+const { pool }  = require('../db.js')
 const controller = {
 	getNegocios: (req, res) => {
 		res.render('negocios/form.hbs')
