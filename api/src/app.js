@@ -54,7 +54,7 @@ app.use((req, res, next) => {
 //routes
 app.use('/api', routeAuth);
 app.use('/api', routeNegocio);
-app.use('/api', routePagina);
+app.use('/', routePagina);
 
 //static files
 app.use(express.static(path.join(__dirname, 'public')));

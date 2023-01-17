@@ -1,25 +1,40 @@
 <main class="index">
 	<header class="masthead d-flex">
 		<div class="container text-center my-auto">
+			{{#if user }}
 			<h1 class="mb-1">
 				Negocios
 			</h1>
 			<div>
-			<h5 class="mb-5">
+			<h5 class="mb-3">
 				<em>Busca negocios y contacta con ellos</em>
 			</h5>
-			<a href=""></a>
+			<a class="btn btn-success mb-5" href="/api/listnegocios/alluser">Ver todos los negocios</a>
+			</div>
+			<div> si deseas agrega los tuyos
+				<a class="btn btn-success" href="/api/postnegocios">Crear Negocios</a>
+			</div>
+			{{else}}
+			<h1 class="mb-1">
+				Negocios
+			</h1>
+			<div>
+			<h5 class="mb-3">
+				<em>Busca negocios y contacta con ellos</em>
+			</h5>
+			<a class="btn btn-success mb-5" href="/api/listnegocios/alluser">Ver todos los negocios</a>
 			</div>
 			<hr>
 			<div>
 			<h5 >Agrega tus negocios y espera a que te contacten
 			</h5>
 			<div>
-			<a href="/api/crearuser">Registrate</a>
+			<a class="btn btn-success mb-2 mt-2" href="/api/crearuser">Registrate</a>
 			<p>ó</p>
-			<a href="/api/loginuser">Inicia Sesión</a>
+			<a class="btn btn-success" href="/api/loginuser">Inicia Sesión</a>
 			</div>
 			</div>
+			{{/if}}
 		</div>
 	</header>
 </main>

@@ -49,7 +49,7 @@ const controller = {
 	},
 	listNegociosAllUser: async(req, res) => {
 		const negociosUser = await pool.query('SELECT * FROM negocios, usuarios WHERE negocios.User_id = usuarios.ID');
-		console.log(negociosUser)
+		res.render('negocios/allUsersNegocios.hbs', {negocios: negociosUser});
 		
 	}
 }
