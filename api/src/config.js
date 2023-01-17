@@ -12,15 +12,3 @@ module.exports = {
 		PORT: process.env.PORT_APP
 	}
 }
-
-/*module.exports = {
-	db:{
-		host: 'localhost',
-		user: 'crud',
-		password: 'crudcontraseña',
-		database: 'crud_negocios'
-	},
-	appS: {
-		PORT: 3003
-	}
-}*/
