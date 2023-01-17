@@ -16,7 +16,7 @@ const routePagina = require('./routes/paginaInicio.js');
 const app = express();
 require('./lib/passport.js');
 //configuraciones
-app.set('port', appS.PORT_APP);
+app.set('port', appS.PORT);
 app.set('views', path.join(__dirname, 'views'));
 app.engine('.hbs', engine({
 	defaultLayout: 'main',

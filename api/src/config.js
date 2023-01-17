@@ -9,6 +9,6 @@ module.exports = {
 		database: process.env.NAME_DB
 	},
 	appS: {
-		PORT: process.env.PORT_APP
+		PORT: process.env.PORT
 	}
 }
