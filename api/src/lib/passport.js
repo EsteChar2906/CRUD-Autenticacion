@@ -9,7 +9,7 @@ passport.use('local.singin', new LocalStrategy({
 	passwordField: 'Contraseña',
 	passReqToCallback: true
 }, async(req, username, password, done) => {
-	const [rows] = await pool.query('SELECT * FROM usuarios WHERE Correo = ?', [username]);
+	const rows = await pool.query('SELECT * FROM usuarios WHERE Correo = ?', [username]);
 	if(rows.length > 0){
 		const user = rows[0];
 		const validarContraseña = await helpers.compararContraseña(password, user.Contraseña);
@@ -51,7 +51,7 @@ passport.use('local.singup', new LocalStrategy({
 
 	newUser.Contraseña = await helpers.encriptarContraseña(password);
 	
-	const [rows]  = await pool.query('INSERT INTO usuarios SET ?', [newUser]);
+	const rows  = await pool.query('INSERT INTO usuarios SET ?', [newUser]);
 	newUser.ID = rows.insertId;
 	return done(null, newUser);
 }));
@@ -61,7 +61,7 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser(async (id, done) => {
-	const [rows] = await pool.query('SELECT * FROM usuarios WHERE ID = ?', [id]);
+	const rows = await pool.query('SELECT * FROM usuarios WHERE ID = ?', [id]);
 	if(!id){
 		done(null, false);
 	} else {

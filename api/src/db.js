@@ -1,22 +1,20 @@
-const { createPool } = require('mysql2/promise');
+const mysql = require('mysql2');
 const { promisify } = require('util');
 const { db } = require('./config.js');
 
-const pool = createPool(db);
+const pool = mysql.createPool(db);
 
-/*const connection = async() =>{
-	await pool.connect((err) => {
-		if(err){
-			console.log(err.mesage);
-		}
-		console.log('DB is Connected');
-		return;
-	})
-};
+pool.getConnection((err, connection) => {
+	if(err){
+		console.log(err)
+	}
 
-connection()
+	if(connection) connection.release();
+	console.log('DB is Connected');
+	return;
+});
 
 //promisify para querys
-pool.query = promisify(pool.query);*/
+pool.query = promisify(pool.query);
 
 module.exports = pool;
