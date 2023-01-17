@@ -1,6 +1,6 @@
 const express = require('express');
 const morgan = require('morgan');
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const {engine} = require('express-handlebars');
 const libHandlebars = require('./lib/handlebars.js');
 const path = require('path');
