@@ -1,0 +1,31 @@
+<div class="container p-4">
+	<div class="row">
+		<div class="col-md-4 mx-auto">
+			<div class="card">
+				<div class="cars-body">
+					<form action="/api/postnegocios" method="POST">
+						<div class="form-group">
+							<label for="Nombre" class="form-label">Nombre del negocio: </label>
+							<input type="text" class=" form-control" id="Nombre" name="Nombre" />
+						</div>
+						<div class="form-group">
+							<label for="Direccion" class="form-label">Direccion: </label>
+							<input type="text" class=" form-control" id="Direccion" name="Direccion" />
+						</div>
+						<div class="form-group">
+							<label for="Celular" class="form-label">Celular: </label>
+							<input type="text" class=" form-control" id="Celular" name="Celular" />
+						</div>
+						<div class="form-group">
+							<label for="Correo" class="form-label">Correo: </label>
+							<input type="email" class=" form-control" id="Correo" name="Correo" />
+						</div>
+						<div class="form-control">
+							<button class="btn btn-success btn-block">Guardar</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

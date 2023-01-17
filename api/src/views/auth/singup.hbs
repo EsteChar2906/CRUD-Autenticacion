@@ -1,0 +1,50 @@
+<div class="container p-4">
+	<div class="row">
+		<div class="col-md-4 mx-auto">
+			<div class="card text-center">
+				<div class="card-header">
+					<h3>Registrarse</h3>
+				</div>
+				<div class="cars-body">
+					<form action="/api/crearuser" method="POST">
+					<div class="form-group">
+						<label for="Identificacion" class="form-label">Identificacion: </label>
+						<input type="number" class=" form-control" id="Identificacion" name="Identificacion" />
+					</div>
+					<div class="form-group">
+						<label for="Primer_nombre" class="form-label">Primer nombre: </label>
+						<input type="text" class=" form-control" id="Primer_nombre" name="Primer_nombre" />
+					</div>
+					<div class="form-group">
+						<label for="Segundo_nombre" class="form-label">Segundo nombre: </label>
+						<input type="text" class=" form-control" id="Segundo_nombre" name="Segundo_nombre" />
+					</div>
+					<div class="form-group">
+						<label for="Primer_apellido" class="form-label">Primer apellido: </label>
+						<input type="text" class=" form-control" id="Primer_apellido" name="Primer_apellido" />
+					</div>
+					<div class="form-group">
+						<label for="Segundo_apellido" class="form-label">Segundo apellido: </label>
+						<input type="text" class=" form-control" id="Segundo_apellido" name="Segundo_apellido" />
+					</div>
+					<div class="form-group">
+						<label for="Celular" class="form-label">Celular: </label>
+						<input type="text" class=" form-control" id="Celular" name="Celular" />
+					</div>
+					<div class="form-group">
+						<label for="Correo" class="form-label">Correo: </label>
+						<input type="email" class=" form-control" id="Correo" name="Correo" />
+					</div>
+					<div class="form-group">
+						<label for="Contraseña" class="form-label">Contraseña: </label>
+						<input type="password" class=" form-control" id="Contraseña" name="Contraseña" />
+					</div>
+					<div class="form-control">
+							<button class="btn btn-success btn-block">Registrar nuevo usuario</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
