@@ -2,14 +2,12 @@ const mysql = require('mysql');
 const { promisify } = require('util');
 const { db } = require('./config.js');
 
-const pool = mysql.createPool(db);
+const pool = mysql.createConnection(db);
 
-pool.getConnection((err, connection) => {
+pool.connect((err) => {
 	if(err){
 		console.log(err)
 	}
-
-	if(connection) connection.release();
 	console.log('DB is Connected');
 	return;
 });
