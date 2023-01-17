@@ -7,9 +7,7 @@ module.exports = {
 		password: process.env.PASSWORD_DB,
 		port: process.env.PORT_DB,
 		database: process.env.NAME_DB,
-		waitForConnections: true,
-		connectionLimit: 10,
-		queueLimit: 0
+		protocol: "TCP"
 	},
 	appS: {
 		PORT: process.env.PORT
